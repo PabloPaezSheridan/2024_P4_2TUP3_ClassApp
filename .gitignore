@@ -8,3 +8,7 @@
 /Domain/.vs
 /Domain/obj
 /Infrastructure/obj
+/Application/bin/Debug/net8.0
+/ClassProject_Presentation/bin/Debug/net8.0
+/Domain/bin/Debug/netstandard2.1
+/Infrastructure/bin/Debug/net8.0

@@ -1,6 +1,9 @@
 using Application.Interfaces;
 using Application.Services;
+using Infrastructure;
 using Infrastructure.Repositories;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +12,12 @@ builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<UserService>();
 #endregion
 
+string connectionString = builder.Configuration["ConnectionStrings:ConsultaAlumnosDBConnectionString"]!;
 
+// Configure the SQLite connection
+var connection = new SqliteConnection(connectionString);
+connection.Open();
+builder.Services.AddDbContext<TUP3Context>(dbContextOptions => dbContextOptions.UseSqlite(connection));
 // Add services to the container.
 
 builder.Services.AddControllers();

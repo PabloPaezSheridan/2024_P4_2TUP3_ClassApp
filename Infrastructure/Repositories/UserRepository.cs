@@ -10,6 +10,14 @@ namespace Infrastructure.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        
+
+        public UserRepository(TUP3Context context)
+        {
+            _context = context;
+        }
+        public User? GetOne(string username)
+        {
+            return _context.Users.FirstOrDefault(u => u.Name == username);
+        }
     }
 }
