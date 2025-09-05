@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 #region Injections
-builder.Services.AddSingleton<IUserRepository, UserRepository>();
-builder.Services.AddSingleton<UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<UserService>();
 #endregion
 
 string connectionString = builder.Configuration["ConnectionStrings:ConsultaAlumnosDBConnectionString"]!;
