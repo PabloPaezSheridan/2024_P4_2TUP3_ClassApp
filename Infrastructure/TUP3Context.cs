@@ -12,6 +12,7 @@ namespace Infrastructure
     {
         public DbSet<User> Users { get; set; }
         public DbSet<SaleOrder> SaleOrders { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public TUP3Context(DbContextOptions<TUP3Context> options) : base(options)
         {
