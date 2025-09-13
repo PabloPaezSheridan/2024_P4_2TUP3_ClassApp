@@ -8,16 +8,11 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class ProductRepository: BaseRepository<Product>, IProductRepository
     {
-
-        public UserRepository(TUP3Context context)
+        public ProductRepository(TUP3Context context)
         {
             _context = context;
-        }
-        public User? GetOne(string username)
-        {
-            return _context.Users.FirstOrDefault(u => u.Name == username);
         }
 
 

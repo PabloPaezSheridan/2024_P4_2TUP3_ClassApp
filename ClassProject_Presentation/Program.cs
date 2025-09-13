@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 #region Injections
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
 #endregion
 
 string connectionString = builder.Configuration["ConnectionStrings:ConsultaAlumnosDBConnectionString"]!;

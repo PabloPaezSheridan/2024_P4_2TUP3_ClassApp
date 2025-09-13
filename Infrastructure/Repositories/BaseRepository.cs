@@ -14,5 +14,10 @@ namespace Infrastructure.Repositories
         {  
             return new List<T?>(); 
         }
+
+        public void Add(T item) { 
+            _context.Add(item);
+            _context.SaveChanges();
+        }
     }
 }

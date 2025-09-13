@@ -1,14 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IBaseRespository<T> where T : class
+    public interface IProductRepository : IBaseRespository<Product>
     {
-        List<T?> Get();
-        void Add(T? item);
     }
 }
