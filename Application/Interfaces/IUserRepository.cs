@@ -9,5 +9,6 @@ namespace Application.Interfaces
 {
     public interface IUserRepository : IBaseRespository<User>
     {
+        User? GetOne(string username);
     }
 }

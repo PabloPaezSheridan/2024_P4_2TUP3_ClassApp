@@ -13,5 +13,14 @@ namespace ClassProject_Presentation.Controllers
         {
             _userService = userService;
         }
+
+        [HttpPost]
+        public IActionResult Add([FromQuery] string username, [FromBody] string password)
+        {
+
+            _userService.AddUser(new Domain.Entities.User() { Password = password, Name = username });
+            return Ok();
+        }
+
     }
 }

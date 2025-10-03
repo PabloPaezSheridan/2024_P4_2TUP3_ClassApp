@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,20 @@ namespace Application.Services
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
+        }
+
+        public List<User?> GetUsers()
+        {
+            return _userRepository.Get();
+        }
+
+        public User? GetByUser(string username) {
+            return _userRepository.GetOne(username);
+        }
+
+        public void AddUser(User user)
+        {
+            _userRepository.Add(user);
         }
     }
 }

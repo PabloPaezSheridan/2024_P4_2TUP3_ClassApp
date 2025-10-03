@@ -12,7 +12,7 @@ namespace Infrastructure.Repositories
 
         public List<T?> Get()
         {  
-            return new List<T?>(); 
+            return _context.Set<T>().ToList<T>(); 
         }
 
         public void Add(T item) { 
