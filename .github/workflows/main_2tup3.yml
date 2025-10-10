@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - 2tup3
 on:
   push:
     branches:
-      - main
+      - prod
   workflow_dispatch:
 
 jobs:
