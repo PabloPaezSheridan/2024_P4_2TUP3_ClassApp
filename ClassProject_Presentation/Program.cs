@@ -28,9 +28,7 @@ builder.Services.AddHttpClient(
     client =>
     {
         client.BaseAddress = new Uri("https://pokeapi.co/api/v2/");
-    })
-    .AddPolicyHandler(ResiliencePolicies.GetRetryPolicy(pokeApiResilienceConfiguration))
-    .AddPolicyHandler(ResiliencePolicies.GetCircuitBreakerPolicy(pokeApiResilienceConfiguration));
+    });
 
 #endregion
 
