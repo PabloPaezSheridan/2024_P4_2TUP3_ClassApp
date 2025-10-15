@@ -24,7 +24,7 @@ PollySettings pokeApiResilienceConfiguration = new()
 };
 
 builder.Services.AddHttpClient(
-    "pokeHttpClient",
+    "pokeApiHttpClient",
     client =>
     {
         client.BaseAddress = new Uri("https://pokeapi.co/api/v2/");
