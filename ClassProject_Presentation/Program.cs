@@ -1,8 +1,8 @@
 using Application.Interfaces;
 using Application.Services;
 using Infrastructure;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -40,12 +40,11 @@ builder.Services.AddScoped<IProductRepository,ProductRepository>();
 builder.Services.AddSingleton<BerryService>();
 #endregion
 
-string connectionString = builder.Configuration["ConnectionStrings:ConsultaAlumnosDBConnectionString"]!;
+string connectionString = builder.Configuration["ConnectionStrings:TUP3ConnectionString"]!;
 
 // Configure the SQLite connection
-var connection = new SqliteConnection(connectionString);
-connection.Open();
-builder.Services.AddDbContext<TUP3Context>(dbContextOptions => dbContextOptions.UseSqlite(connection));
+builder.Services.AddDbContext<TUP3Context>(options =>
+    options.UseSqlServer(connectionString));
 // Add services to the container.
 
 builder.Services.AddControllers();
