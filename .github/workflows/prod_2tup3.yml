@@ -47,6 +47,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
+
+      - name: Update database with EF Core migrations
+        run: dotnet ef database update --project 2TUP3_ClassApp/Infrastructure/Infrastructure.csproj --startup-project ClassProject_Presentation\ClassProject_Presentation.csproj
       
       - name: Login to Azure
         uses: azure/login@v2
