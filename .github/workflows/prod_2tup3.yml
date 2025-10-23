@@ -48,6 +48,9 @@ jobs:
         with:
           name: .net-app
 
+      - name: Install Entity Framework Core tools
+        run: dotnet tool install --global dotnet-ef --version 8.*
+
       - name: Update database with EF Core migrations
         run: dotnet ef database update --project 2TUP3_ClassApp/Infrastructure/Infrastructure.csproj --startup-project ClassProject_Presentation\ClassProject_Presentation.csproj
       
