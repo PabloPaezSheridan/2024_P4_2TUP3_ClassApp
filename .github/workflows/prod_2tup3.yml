@@ -43,16 +43,27 @@ jobs:
       contents: read #This is required for actions/checkout
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
+      - name: Checkout code for EF migrations
+        uses: actions/checkout@v4
+
+      - name: Set up .NET Core for EF tools
+        uses: actions/setup-dotnet@v4
         with:
-          name: .net-app
+          dotnet-version: '8.x'
 
       - name: Install Entity Framework Core tools
         run: dotnet tool install --global dotnet-ef --version 8.*
 
+      - name: Restore dependencies for EF
+        run: dotnet restore
+
       - name: Update database with EF Core migrations
         run: dotnet ef database update --project Infrastructure/Infrastructure.csproj --startup-project ClassProject_Presentation/ClassProject_Presentation.csproj
+
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: .net-app
       
       - name: Login to Azure
         uses: azure/login@v2
